@@ -863,19 +863,19 @@
         </div>
     </section>
 
-    <!-- Call to Action -->
-    <section class="cta-section">
-        <h2>Започнете да рециклирате днес!</h2>
-        <p>Присъединете се към милионите хора по света, които вече допринасят за по-чиста и зелена планета</p>
-        <a href="#" class="btn btn-secondary">Научете как да рециклирате</a>
-    </section>
+    <!-- Call to Action - променени стилове за текста -->
+<section class="cta-section" style="color: var(--dark);">
+    <h2 style="color: var(--dark);">Започнете да рециклирате днес!</h2>
+    <p style="color: var(--dark);">Присъединете се към милионите хора по света, които вече допринасят за по-чиста и зелена планета</p>
+    <a href="#" class="btn btn-secondary">Научете как да рециклирате</a>
+</section>
 
     <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-column">
                 <h3>RecycleMetals</h3>
-                <p>Сайтът е проект по Химия и Опазване на Околната Среда. Сайтът има цел да информира и заинтересова хората за начини как да рециклират, статистики и т.н. Всичко в този убсайт е за образователни цели.</p>
+                <p>Сайтът е проект по Химия и Опазване на Околната Среда за часа на г-жа Красимира Добрева в ПГЕ . Сайтът има цел да информира и заинтересова хората за начини как да рециклират, статистики и т.н. Всичко в този убсайт е за образователни цели.</p>
                 <div class="social-links">
                 </div>
             </div>
@@ -928,124 +928,137 @@
         });
         
         // Quiz Functionality
-        const quizData = [
-            {
-                question: "Колко процента енергия се спестява при рециклиране на алуминий спрямо добива на нов алуминий?",
-                options: ["40%", "65%", "80%", "95%"],
-                correct: 3
-            },
-            {
-                question: "Кой от следните метали НЕ може да бъде рециклиран безкрайно без загуба на качество?",
-                options: ["Алуминий", "Мед", "Стомана", "Всички могат"],
-                correct: 3
-            },
-            {
-                question: "Колко пъти може да се рециклира един алуминиев кен?",
-                options: ["10 пъти", "25 пъти", "50 пъти", "Без ограничение"],
-                correct: 3
-            },
-            {
-                question: "Какъв процент от световното производство на стомана идва от рециклирана стомана?",
-                options: ["20%", "40%", "60%", "80%"],
-                correct: 1
-            },
-            {
-                question: "Колко по-малко вода се използва при рециклиране на мед спрямо добива на нова мед?",
-                options: ["50%", "75%", "85%", "97%"],
-                correct: 3
-            }
-        ];
-        
-        let currentQuestion = 0;
-        let score = 0;
-        const questionEl = document.getElementById('question');
-        const optionsEl = document.querySelector('.options');
-        const nextBtn = document.getElementById('next-btn');
-        const questionCountEl = document.querySelector('.question-count');
-        
-        function loadQuestion() {
-            const currentQuiz = quizData[currentQuestion];
-            questionEl.textContent = currentQuiz.question;
-            
-            optionsEl.innerHTML = '';
-            currentQuiz.options.forEach((option, index) => {
-                const optionEl = document.createElement('div');
-                optionEl.classList.add('option');
-                optionEl.textContent = option;
-                optionEl.dataset.index = index;
-                optionEl.addEventListener('click', selectOption);
-                optionsEl.appendChild(optionEl);
-            });
-            
-            questionCountEl.textContent = `Въпрос ${currentQuestion + 1} от ${quizData.length}`;
-            nextBtn.style.display = 'none';
-        }
-        
-        function selectOption(e) {
-            const selectedOption = e.target;
-            const selectedIndex = parseInt(selectedOption.dataset.index);
-            const correctIndex = quizData[currentQuestion].correct;
-            
-            // Remove any existing selections
-            document.querySelectorAll('.option').forEach(option => {
-                option.classList.remove('selected');
-            });
-            
-            // Mark selected option
-            selectedOption.classList.add('selected');
-            
-            // Show next button
-            nextBtn.style.display = 'inline-block';
-        }
-        
-        function showResult() {
-            const quizBody = document.querySelector('.quiz-body');
-            quizBody.innerHTML = `
-                <div class="quiz-result">
-                    <h3>Вашият резултат</h3>
-                    <div class="score">${score}/${quizData.length}</div>
-                    <p>${score === quizData.length ? 'Чудесно! Вие сте експерт в рециклирането!' : 
-                       score >= quizData.length/2 ? 'Добър резултат! Продължавайте да се образовате!' : 
-                       'Опитайте отново! Рециклирането е важно!'}</p>
-                    <button class="btn btn-secondary" id="restart-btn">Пробвайте отново</button>
-                </div>
-            `;
-            
-            document.getElementById('restart-btn').addEventListener('click', () => {
-                currentQuestion = 0;
-                score = 0;
-                loadQuestion();
-                document.querySelector('.quiz-footer').style.display = 'flex';
-            });
-        }
-        
-        nextBtn.addEventListener('click', () => {
-            const selectedOption = document.querySelector('.option.selected');
-            
-            if (!selectedOption) {
-                alert('Моля изберете отговор!');
-                return;
-            }
-            
-            const selectedIndex = parseInt(selectedOption.dataset.index);
-            const correctIndex = quizData[currentQuestion].correct;
-            
-            if (selectedIndex === correctIndex) {
-                score++;
-            }
-            
-            currentQuestion++;
-            
-            if (currentQuestion < quizData.length) {
-                loadQuestion();
-            } else {
-                document.querySelector('.quiz-footer').style.display = 'none';
-                showResult();
-            }
-        });
-        
-        // Initialize quiz
+const quizData = [
+    {
+        question: "Колко процента енергия се спестява при рециклиране на алуминий спрямо добива на нов алуминий?",
+        options: ["40%", "65%", "80%", "95%"],
+        correct: 3
+    },
+    {
+        question: "Кой от следните метали НЕ може да бъде рециклиран безкрайно без загуба на качество?",
+        options: ["Алуминий", "Мед", "Стомана", "Всички могат"],
+        correct: 3
+    },
+    {
+        question: "Колко пъти може да се рециклира един алуминиев кен?",
+        options: ["10 пъти", "25 пъти", "50 пъти", "Без ограничение"],
+        correct: 3
+    },
+    {
+        question: "Какъв процент от световното производство на стомана идва от рециклирана стомана?",
+        options: ["20%", "40%", "60%", "80%"],
+        correct: 1
+    },
+    {
+        question: "Колко по-малко вода се използва при рециклиране на мед спрямо добива на нова мед?",
+        options: ["50%", "75%", "85%", "97%"],
+        correct: 3
+    }
+];
+
+let currentQuestion = 0;
+let score = 0;
+const questionEl = document.getElementById('question');
+const optionsEl = document.querySelector('.options');
+const nextBtn = document.getElementById('next-btn');
+const questionCountEl = document.querySelector('.question-count');
+
+function loadQuestion() {
+    const currentQuiz = quizData[currentQuestion];
+    questionEl.textContent = currentQuiz.question;
+    
+    optionsEl.innerHTML = '';
+    currentQuiz.options.forEach((option, index) => {
+        const optionEl = document.createElement('div');
+        optionEl.classList.add('option');
+        optionEl.textContent = option;
+        optionEl.dataset.index = index;
+        optionEl.addEventListener('click', selectOption);
+        optionsEl.appendChild(optionEl);
+    });
+    
+    questionCountEl.textContent = `Въпрос ${currentQuestion + 1} от ${quizData.length}`;
+    nextBtn.style.display = 'none';
+    nextBtn.textContent = currentQuestion === quizData.length - 1 ? 'Виж резултата' : 'Следващ въпрос';
+}
+
+function selectOption(e) {
+    const selectedOption = e.target;
+    const selectedIndex = parseInt(selectedOption.dataset.index);
+    const correctIndex = quizData[currentQuestion].correct;
+    
+    // Remove any existing selections
+    document.querySelectorAll('.option').forEach(option => {
+        option.classList.remove('selected', 'correct', 'incorrect');
+    });
+    
+    // Mark selected option
+    selectedOption.classList.add('selected');
+    
+    // Show next button
+    nextBtn.style.display = 'inline-block';
+}
+
+function showResult() {
+    const quizBody = document.querySelector('.quiz-body');
+    quizBody.innerHTML = `
+        <div class="quiz-result">
+            <h3>Вашият резултат</h3>
+            <div class="score">${score}/${quizData.length}</div>
+            <p>${score === quizData.length ? 'Чудесно! Вие сте експерт в рециклирането!' : 
+               score >= quizData.length/2 ? 'Добър резултат! Продължавайте да се образовате!' : 
+               'Опитайте отново! Рециклирането е важно!'}</p>
+            <button class="btn btn-secondary" id="restart-btn">Пробвайте отново</button>
+        </div>
+    `;
+    
+    document.getElementById('restart-btn').addEventListener('click', () => {
+        currentQuestion = 0;
+        score = 0;
         loadQuestion();
+        document.querySelector('.quiz-footer').style.display = 'flex';
+    });
+}
+
+nextBtn.addEventListener('click', () => {
+    const selectedOption = document.querySelector('.option.selected');
+    
+    if (!selectedOption) {
+        alert('Моля изберете отговор!');
+        return;
+    }
+    
+    const selectedIndex = parseInt(selectedOption.dataset.index);
+    const correctIndex = quizData[currentQuestion].correct;
+    
+    // Mark correct and incorrect answers
+    document.querySelectorAll('.option').forEach(option => {
+        const optionIndex = parseInt(option.dataset.index);
+        if (optionIndex === correctIndex) {
+            option.classList.add('correct');
+        } else if (optionIndex === selectedIndex && selectedIndex !== correctIndex) {
+            option.classList.add('incorrect');
+        }
+    });
+    
+    if (selectedIndex === correctIndex) {
+        score++;
+    }
+    
+    currentQuestion++;
+    
+    if (currentQuestion < quizData.length) {
+        setTimeout(() => {
+            loadQuestion();
+        }, 1500); // Delay to show feedback before next question
+    } else {
+        document.querySelector('.quiz-footer').style.display = 'none';
+        showResult();
+    }
+});
+
+// Initialize quiz - само веднъж!
+loadQuestion();
         
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
