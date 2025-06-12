@@ -467,6 +467,75 @@
             padding: 1.5rem 2rem;
             background: #f5f5f5;
         }
+.quiz-container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        max-width: 700px;
+        margin: auto;
+    }
+    .question {
+        font-size: 1.3rem;
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+    .options {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .option {
+        background-color: #f1f1f1;
+        padding: 10px 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    .option:hover {
+        background-color: #ddd;
+    }
+    .option.correct {
+        background-color: #4CAF50;
+        color: white;
+    }
+    .option.incorrect {
+        background-color: #f44336;
+        color: white;
+    }
+    .option.selected {
+        border: 2px solid #333;
+    }
+    .quiz-footer {
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .btn {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 1rem;
+    }
+    .btn-primary {
+        background-color: #2e7d32;
+        color: white;
+    }
+    .btn-secondary {
+        background-color: #555;
+        color: white;
+    }
+    .quiz-result {
+        text-align: center;
+        margin-top: 30px;
+    }
+    .score {
+        font-size: 2rem;
+        font-weight: bold;
+        margin: 10px 0;
+    }
 
         .btn {
             padding: 0.8rem 1.8rem;
@@ -684,7 +753,7 @@
         <div class="nav-container">
             <a href="#" class="logo">
                 <i class="fas fa-recycle"></i>
-                <span>RecycleMetals</span>
+                <span>RecycleNow</span>
             </a>
             
             <nav>
@@ -693,7 +762,7 @@
                     <li><a href="#benefits">Ползи</a></li>
                     <li><a href="#process">Процес</a></li>
                     <li><a href="#statistics">Статистики</a></li>
-                    <li><a href="#quiz">Квиз</a></li>
+                    <li><a href="#quiz">Тест</a></li>
                 </ul>
             </nav>
             
@@ -705,7 +774,6 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <!-- This <video> tag is used to display a background video in the hero section -->
         <video autoplay muted loop class="hero-video">
         </video>
         
@@ -812,62 +880,58 @@
             <div class="stat-card">
                 <i class="fas fa-industry"></i>
                 <div class="stat-number">40%</div>
-                <div class="stat-title">от световното производство на стомана е от рециклирана стомана</div>
+                <div class="stat-title">От световното производство на стомана е от рециклирана стомана</div>
             </div>
             
             <div class="stat-card">
                 <i class="fas fa-plug"></i>
                 <div class="stat-number">95%</div>
-                <div class="stat-title">енергия спестява рециклирането на алуминий спрямо добива</div>
+                <div class="stat-title">Енергия спестява рециклирането на алуминий спрямо добива</div>
             </div>
             
             <div class="stat-card">
                 <i class="fas fa-water"></i>
                 <div class="stat-number">97%</div>
-                <div class="stat-title">по-малко вода се използва при рециклиране на мед</div>
+                <div class="stat-title">По-малко вода се използва при рециклиране на мед</div>
             </div>
             
             <div class="stat-card">
                 <i class="fas fa-infinity"></i>
                 <div class="stat-number">∞</div>
-                <div class="stat-title">металите могат да се рециклират безкрайно без загуба на качество</div>
+                <div class="stat-title">Металите могат да се рециклират безкрайно без загуба на качество</div>
             </div>
         </div>
     </section>
 
     <!-- Quiz Section -->
-    <section id="quiz" class="quiz-section">
-        <h2 class="section-title">Проверете знанията си</h2>
-        
-        <div class="quiz-container">
-            <div class="quiz-header">
-                <h2>Квиз за рециклиране на метали</h2>
-                <p>Отговорете на въпросите и проверете знанията си</p>
-            </div>
-            
-            <div class="quiz-body">
-                <div class="question" id="question">Колко процента енергия се спестява при рециклиране на алуминий спрямо добива на нов алуминий?</div>
-                
-                <div class="options">
-                    <div class="option">40%</div>
-                    <div class="option">65%</div>
-                    <div class="option">80%</div>
-                    <div class="option">95%</div>
-                </div>
-            </div>
-            
-            <div class="quiz-footer">
-                <div class="question-count">Въпрос 1 от 5</div>
-                <button class="btn btn-primary" id="next-btn">Следващ въпрос</button>
-            </div>
+<section id="quiz" class="quiz-section">
+    <h2 class="section-title">Проверете знанията си</h2>
+    
+    <div class="quiz-container">
+        <div class="quiz-header">
+            <h2>Въпроси за рециклиране на метали</h2>
+            <p>Отговорете на въпросите и проверете знанията си</p>
         </div>
-    </section>
+        
+        <div class="quiz-body">
+            <div class="question" id="question">Въпросът ще се зареди тук</div>
+            
+            <div class="options" id="options"></div>
+        </div>
+        
+        <div class="quiz-footer">
+            <div class="question-count" id="question-count">Въпрос 1 от 5</div>
+            <button class="btn btn-primary" id="next-btn">Следващ въпрос</button>
+        </div>
+    </div>
+</section>
+
 
     <!-- Call to Action - променени стилове за текста -->
 <section class="cta-section" style="color: var(--dark);">
     <h2 style="color: var(--dark);">Започнете да рециклирате днес!</h2>
     <p style="color: var(--dark);">Присъединете се към милионите хора по света, които вече допринасят за по-чиста и зелена планета</p>
-    <a href="#" class="btn btn-secondary">Научете как да рециклирате</a>
+    <a href="https://b-smart.education/рециклиране-1-106" class="btn btn-secondary">Научете как да рециклирате</a>
 </section>
 
     <!-- Footer -->
@@ -875,7 +939,7 @@
         <div class="footer-content">
             <div class="footer-column">
                 <h3>RecycleMetals</h3>
-                <p>Сайтът е проект по Химия и Опазване на Околната Среда за часа на г-жа Красимира Добрева в ПГЕ . Сайтът има цел да информира и заинтересова хората за начини как да рециклират, статистики и т.н. Всичко в този убсайт е за образователни цели.</p>
+                <p>Сайтът е проект за часа по Химия и Опазване на Околната Среда на г-жа Красимира Добрева в ПГЕ. Сайтът има цел да информира и заинтересова хората за начини как да рециклират, статистики и т.н. Всичко в този убсайт е за образователни цели.</p>
                 <div class="social-links">
                 </div>
             </div>
@@ -883,10 +947,10 @@
             <div class="footer-column">
                 <h3>Ресурси</h3>
                 <ul class="footer-links">
-                    <li><a href="#">Как да рециклираме</a></li>
-                    <li><a href="#">Карта на пунктовете</a></li>
-                    <li><a href="#">Екологични съвети</a></li>
-                    <li><a href="#">Образователни материали</a></li>
+                    <li><a href="https://b-smart.education/рециклиране-1-106">Как да рециклираме</a></li>
+                    <li><a href="https://www.ecopack.bg/bg/za-grajdani/karta">Карта на пунктовете</a></li>
+                    <li><a href="https://zdraveivoda.net/eco-nachin-na-jivot/екологични-навици-за-устойчива-екосистема/">Екологични съвети</a></li>
+                    <li><a href="https://ucha.se/watch/11507/opazvane-na-okolnata-sreda-prava-i-zadalzhenia/urok/29950">Образователни материали</a></li>
                 </ul>
             </div>
             
@@ -958,15 +1022,16 @@ const quizData = [
 
 let currentQuestion = 0;
 let score = 0;
+
 const questionEl = document.getElementById('question');
-const optionsEl = document.querySelector('.options');
+const optionsEl = document.getElementById('options');
 const nextBtn = document.getElementById('next-btn');
-const questionCountEl = document.querySelector('.question-count');
+const questionCountEl = document.getElementById('question-count');
 
 function loadQuestion() {
     const currentQuiz = quizData[currentQuestion];
     questionEl.textContent = currentQuiz.question;
-    
+
     optionsEl.innerHTML = '';
     currentQuiz.options.forEach((option, index) => {
         const optionEl = document.createElement('div');
@@ -976,63 +1041,19 @@ function loadQuestion() {
         optionEl.addEventListener('click', selectOption);
         optionsEl.appendChild(optionEl);
     });
-    
+
     questionCountEl.textContent = `Въпрос ${currentQuestion + 1} от ${quizData.length}`;
     nextBtn.style.display = 'none';
-    nextBtn.textContent = currentQuestion === quizData.length - 1 ? 'Виж резултата' : 'Следващ въпрос';
 }
 
 function selectOption(e) {
     const selectedOption = e.target;
     const selectedIndex = parseInt(selectedOption.dataset.index);
     const correctIndex = quizData[currentQuestion].correct;
-    
-    // Remove any existing selections
-    document.querySelectorAll('.option').forEach(option => {
-        option.classList.remove('selected', 'correct', 'incorrect');
-    });
-    
-    // Mark selected option
-    selectedOption.classList.add('selected');
-    
-    // Show next button
-    nextBtn.style.display = 'inline-block';
-}
 
-function showResult() {
-    const quizBody = document.querySelector('.quiz-body');
-    quizBody.innerHTML = `
-        <div class="quiz-result">
-            <h3>Вашият резултат</h3>
-            <div class="score">${score}/${quizData.length}</div>
-            <p>${score === quizData.length ? 'Чудесно! Вие сте експерт в рециклирането!' : 
-               score >= quizData.length/2 ? 'Добър резултат! Продължавайте да се образовате!' : 
-               'Опитайте отново! Рециклирането е важно!'}</p>
-            <button class="btn btn-secondary" id="restart-btn">Пробвайте отново</button>
-        </div>
-    `;
-    
-    document.getElementById('restart-btn').addEventListener('click', () => {
-        currentQuestion = 0;
-        score = 0;
-        loadQuestion();
-        document.querySelector('.quiz-footer').style.display = 'flex';
-    });
-}
-
-nextBtn.addEventListener('click', () => {
-    const selectedOption = document.querySelector('.option.selected');
-    
-    if (!selectedOption) {
-        alert('Моля изберете отговор!');
-        return;
-    }
-    
-    const selectedIndex = parseInt(selectedOption.dataset.index);
-    const correctIndex = quizData[currentQuestion].correct;
-    
-    // Mark correct and incorrect answers
+    // Disable further selection
     document.querySelectorAll('.option').forEach(option => {
+        option.style.pointerEvents = 'none';
         const optionIndex = parseInt(option.dataset.index);
         if (optionIndex === correctIndex) {
             option.classList.add('correct');
@@ -1040,24 +1061,49 @@ nextBtn.addEventListener('click', () => {
             option.classList.add('incorrect');
         }
     });
-    
+
+    selectedOption.classList.add('selected');
     if (selectedIndex === correctIndex) {
         score++;
     }
-    
+
+    nextBtn.style.display = 'inline-block';
+}
+
+nextBtn.addEventListener('click', () => {
     currentQuestion++;
-    
+
     if (currentQuestion < quizData.length) {
-        setTimeout(() => {
-            loadQuestion();
-        }, 1500); // Delay to show feedback before next question
+        loadQuestion();
     } else {
-        document.querySelector('.quiz-footer').style.display = 'none';
         showResult();
     }
 });
 
-// Initialize quiz - само веднъж!
+function showResult() {
+    const quizBody = document.querySelector('.quiz-body');
+    const quizFooter = document.querySelector('.quiz-footer');
+    quizBody.innerHTML = `
+        <div class="quiz-result">
+            <h3>Вашият резултат</h3>
+            <div class="score">${score}/${quizData.length}</div>
+            <p>${score === quizData.length ? 'Чудесно! Вие сте експерт в рециклирането!' : 
+               score >= quizData.length / 2 ? 'Добър резултат! Продължавайте да се образовате!' : 
+               'Опитайте отново! Рециклирането е важно!'}</p>
+            <button class="btn btn-secondary" id="restart-btn">Пробвайте отново</button>
+        </div>
+    `;
+    quizFooter.style.display = 'none';
+
+    document.getElementById('restart-btn').addEventListener('click', () => {
+        currentQuestion = 0;
+        score = 0;
+        loadQuestion();
+        quizFooter.style.display = 'flex';
+    });
+}
+
+// Start the quiz
 loadQuestion();
         
         // Smooth scrolling for navigation links
