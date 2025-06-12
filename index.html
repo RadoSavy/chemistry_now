@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ползи от рециклиране на металите</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #2e7d32;
+            --primary-dark: #1b5e20;
+            --primary-light: #4caf50;
+            --secondary: #ff9800;
+            --accent: #f44336;
+            --light: #f0f9f0;
+            --dark: #1a1a1a;
+            --text: #333;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f0f9f0 0%, #e0f2e0 100%);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: rgba(46, 125, 50, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo i {
+            color: var(--secondary);
+            font-size: 2.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-links a.active {
+            background: var(--secondary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: var(--secondary);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-links a:hover::after {
+            width: 80%;
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 70px;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            opacity: 0.2;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 2rem;
+            z-index: 10;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s forwards;
+            opacity: 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(255, 152, 0, 0.4);
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease 0.4s forwards;
+            opacity: 0;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(255, 152, 0, 0.5);
+            background: #ff8c00;
+        }
+
+        .floating-icons {
+            position: absolute;
+            bottom: 20%;
+            left: 10%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .floating-icons.right {
+            left: auto;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .floating-icons i {
+            font-size: 3rem;
+            color: var(--primary);
+            opacity: 0.7;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .benefit-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .benefit-icon {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+        }
+
+        .benefit-icon i {
+            font-size: 5rem;
+            color: white;
+        }
+
+        .benefit-content {
+            padding: 2rem;
+        }
+
+        .benefit-content h3 {
+            font-size: 1.8rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+
+        .benefit-content p {
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+
+        .benefit-stats {
+            display: flex;
+            justify-content: space-between;
+            background: var(--light);
+            padding: 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        /* Recycling Process */
+        .process {
+            padding: 5rem 2rem;
+            background: var(--light);
+        }
+
+        .process-steps {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .step {
+            flex: 1;
+            min-width: 250px;
+            max-width: 350px;
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .step:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1.5rem;
+        }
+
+        .step h3 {
+            font-size: 1.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+
+        /* Statistics Section */
+        .statistics {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .stat-card i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin: 1rem 0;
+        }
+
+        .stat-title {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Quiz Section */
+        .quiz-section {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--light);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .quiz-header {
+            background: var(--primary);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .quiz-header h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .quiz-body {
+            padding: 2rem;
+        }
+
+        .question {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 600px) {
+            .options {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .option {
+            padding: 1.2rem;
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 1.1rem;
+        }
+
+        .option:hover {
+            border-color: var(--primary-light);
+            background: #f8fff8;
+        }
+
+        .option.selected {
+            border-color: var(--primary);
+            background: #e8f5e9;
+            font-weight: 600;
+        }
+
+        .quiz-footer {
+            display: flex;
+            justify-content: space-between;
+            padding: 1.5rem 2rem;
+            background: #f5f5f5;
+        }
+
+        .btn {
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+        }
+
+        .btn-secondary {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #e68a00;
+        }
+
+        .quiz-result {
+            padding: 2rem;
+            text-align: center;
+            display: none;
+        }
+
+        .quiz-result h3 {
+            font-size: 2rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+
+        .score {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin: 1rem 0;
+        }
+
+        /* Call to Action */
+        .cta-section {
+            padding: 5rem 2rem;
+            background: linear-gradient rgba(0, 0, 0, 0.7), url('https://images.unsplash.com/photo-1603739903239-8b6e64c3b185?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            color: white;
+        }
+
+        .cta-section h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--secondary);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hero p {
+                font-size: 1.3rem;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                flex-direction: column;
+                background: var(--primary-dark);
+                width: 100%;
+                height: calc(100vh - 70px);
+                padding: 2rem;
+                transition: all 0.4s ease;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .benefit-content h3 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-recycle"></i>
+                <span>RecycleMetals</span>
+            </a>
+            
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home" class="active">Начало</a></li>
+                    <li><a href="#benefits">Ползи</a></li>
+                    <li><a href="#process">Процес</a></li>
+                    <li><a href="#statistics">Статистики</a></li>
+                    <li><a href="#quiz">Квиз</a></li>
+                </ul>
+            </nav>
+            
+            <button class="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <!-- This <video> tag is used to display a background video in the hero section -->
+        <video autoplay muted loop class="hero-video">
+        </video>
+        
+        <div class="hero-content">
+            <h1>Ползи от рециклиране на металите</h1>
+            <p>Спаси природата, пести енергия и ресурси чрез правилното рециклиране!</p>
+            <a href="#benefits" class="cta-button">Научете повече</a>
+        </div>
+        
+        <div class="floating-icons">
+            <i class="fas fa-leaf"></i>
+        </div>
+        
+        <div class="floating-icons right">
+            <i class="fas fa-bolt"></i>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="benefits">
+        <h2 class="section-title">Защо е важно рециклирането на металите?</h2>
+        
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <div class="benefit-content">
+                    <h3>Икономия на енергия</h3>
+                    <p>Рециклирането на металите намалява нуждата от добив на нови суровини, което спестява огромно количество енергия. Например рециклирането на алуминий спестява до 95% от енергията, необходима за производството му от бокситова руда.</p>
+                    <div class="benefit-stats">
+                        <span>Енергийни спестявания:</span>
+                        <span>до 95%</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <i class="fas fa-tree"></i>
+                </div>
+                <div class="benefit-content">
+                    <h3>Опазване на околната среда</h3>
+                    <p>Като рециклираме метали, намаляваме замърсяването и разрушаването на природните екосистеми. Добивът на метали изисква големи количества вода, енергия и води до разрушаване на хабитати и замърсяване на почва и вода.</p>
+                    <div class="benefit-stats">
+                        <span>Намаляване на отпадъци:</span>
+                        <span>до 97%</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <i class="fas fa-globe-europe"></i>
+                </div>
+                <div class="benefit-content">
+                    <h3>Пестене на ресурси</h3>
+                    <p>Металите могат да се рециклират многократно, което помага за съхраняване на ценни природни ресурси. Намалява се нуждата от добив на нови руди, което съхранява ресурсите на Земята за бъдещи поколения.</p>
+                    <div class="benefit-stats">
+                        <span>Рециклируемост:</span>
+                        <span>100%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recycling Process -->
+    <section id="process" class="process">
+        <h2 class="section-title">Процес на рециклиране на метали</h2>
+        
+        <div class="process-steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Събиране</h3>
+                <p>Металните отпадъци се събират от домакинства, предприятия и специални контейнери.</p>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Сортиране</h3>
+                <p>Металите се сортират по вид (черни, цветни) и се подготвят за преработка.</p>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Преработка</h3>
+                <p>Металите се разтопяват при високи температури и се превръщат в нови суровини.</p>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">4</div>
+                <h3>Производство</h3>
+                <p>Рециклираните метали се използват за производство на нови продукти.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section id="statistics" class="statistics">
+        <h2 class="section-title">Статистики за рециклирането на метали</h2>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <i class="fas fa-industry"></i>
+                <div class="stat-number">40%</div>
+                <div class="stat-title">от световното производство на стомана е от рециклирана стомана</div>
+            </div>
+            
+            <div class="stat-card">
+                <i class="fas fa-plug"></i>
+                <div class="stat-number">95%</div>
+                <div class="stat-title">енергия спестява рециклирането на алуминий спрямо добива</div>
+            </div>
+            
+            <div class="stat-card">
+                <i class="fas fa-water"></i>
+                <div class="stat-number">97%</div>
+                <div class="stat-title">по-малко вода се използва при рециклиране на мед</div>
+            </div>
+            
+            <div class="stat-card">
+                <i class="fas fa-infinity"></i>
+                <div class="stat-number">∞</div>
+                <div class="stat-title">металите могат да се рециклират безкрайно без загуба на качество</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz Section -->
+    <section id="quiz" class="quiz-section">
+        <h2 class="section-title">Проверете знанията си</h2>
+        
+        <div class="quiz-container">
+            <div class="quiz-header">
+                <h2>Квиз за рециклиране на метали</h2>
+                <p>Отговорете на въпросите и проверете знанията си</p>
+            </div>
+            
+            <div class="quiz-body">
+                <div class="question" id="question">Колко процента енергия се спестява при рециклиране на алуминий спрямо добива на нов алуминий?</div>
+                
+                <div class="options">
+                    <div class="option">40%</div>
+                    <div class="option">65%</div>
+                    <div class="option">80%</div>
+                    <div class="option">95%</div>
+                </div>
+            </div>
+            
+            <div class="quiz-footer">
+                <div class="question-count">Въпрос 1 от 5</div>
+                <button class="btn btn-primary" id="next-btn">Следващ въпрос</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <h2>Започнете да рециклирате днес!</h2>
+        <p>Присъединете се към милионите хора по света, които вече допринасят за по-чиста и зелена планета</p>
+        <a href="#" class="btn btn-secondary">Научете как да рециклирате</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>RecycleMetals</h3>
+                <p>Сайтът е проект по Химия и Опазване на Околната Среда. Сайтът има цел да информира и заинтересова хората за начини как да рециклират, статистики и т.н. Всичко в този убсайт е за образователни цели.</p>
+                <div class="social-links">
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Ресурси</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Как да рециклираме</a></li>
+                    <li><a href="#">Карта на пунктовете</a></li>
+                    <li><a href="#">Екологични съвети</a></li>
+                    <li><a href="#">Образователни материали</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Контакти</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-envelope"></i> what@email.bg</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            &copy; Радостин Савов VIIIa
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileToggle.innerHTML = navLinks.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Sticky Header
+        const header = document.getElementById('header');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.2)';
+                header.style.background = 'rgba(46, 125, 50, 0.98)';
+            } else {
+                header.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
+                header.style.background = 'rgba(46, 125, 50, 0.95)';
+            }
+        });
+        
+        // Quiz Functionality
+        const quizData = [
+            {
+                question: "Колко процента енергия се спестява при рециклиране на алуминий спрямо добива на нов алуминий?",
+                options: ["40%", "65%", "80%", "95%"],
+                correct: 3
+            },
+            {
+                question: "Кой от следните метали НЕ може да бъде рециклиран безкрайно без загуба на качество?",
+                options: ["Алуминий", "Мед", "Стомана", "Всички могат"],
+                correct: 3
+            },
+            {
+                question: "Колко пъти може да се рециклира един алуминиев кен?",
+                options: ["10 пъти", "25 пъти", "50 пъти", "Без ограничение"],
+                correct: 3
+            },
+            {
+                question: "Какъв процент от световното производство на стомана идва от рециклирана стомана?",
+                options: ["20%", "40%", "60%", "80%"],
+                correct: 1
+            },
+            {
+                question: "Колко по-малко вода се използва при рециклиране на мед спрямо добива на нова мед?",
+                options: ["50%", "75%", "85%", "97%"],
+                correct: 3
+            }
+        ];
+        
+        let currentQuestion = 0;
+        let score = 0;
+        const questionEl = document.getElementById('question');
+        const optionsEl = document.querySelector('.options');
+        const nextBtn = document.getElementById('next-btn');
+        const questionCountEl = document.querySelector('.question-count');
+        
+        function loadQuestion() {
+            const currentQuiz = quizData[currentQuestion];
+            questionEl.textContent = currentQuiz.question;
+            
+            optionsEl.innerHTML = '';
+            currentQuiz.options.forEach((option, index) => {
+                const optionEl = document.createElement('div');
+                optionEl.classList.add('option');
+                optionEl.textContent = option;
+                optionEl.dataset.index = index;
+                optionEl.addEventListener('click', selectOption);
+                optionsEl.appendChild(optionEl);
+            });
+            
+            questionCountEl.textContent = `Въпрос ${currentQuestion + 1} от ${quizData.length}`;
+            nextBtn.style.display = 'none';
+        }
+        
+        function selectOption(e) {
+            const selectedOption = e.target;
+            const selectedIndex = parseInt(selectedOption.dataset.index);
+            const correctIndex = quizData[currentQuestion].correct;
+            
+            // Remove any existing selections
+            document.querySelectorAll('.option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            
+            // Mark selected option
+            selectedOption.classList.add('selected');
+            
+            // Show next button
+            nextBtn.style.display = 'inline-block';
+        }
+        
+        function showResult() {
+            const quizBody = document.querySelector('.quiz-body');
+            quizBody.innerHTML = `
+                <div class="quiz-result">
+                    <h3>Вашият резултат</h3>
+                    <div class="score">${score}/${quizData.length}</div>
+                    <p>${score === quizData.length ? 'Чудесно! Вие сте експерт в рециклирането!' : 
+                       score >= quizData.length/2 ? 'Добър резултат! Продължавайте да се образовате!' : 
+                       'Опитайте отново! Рециклирането е важно!'}</p>
+                    <button class="btn btn-secondary" id="restart-btn">Пробвайте отново</button>
+                </div>
+            `;
+            
+            document.getElementById('restart-btn').addEventListener('click', () => {
+                currentQuestion = 0;
+                score = 0;
+                loadQuestion();
+                document.querySelector('.quiz-footer').style.display = 'flex';
+            });
+        }
+        
+        nextBtn.addEventListener('click', () => {
+            const selectedOption = document.querySelector('.option.selected');
+            
+            if (!selectedOption) {
+                alert('Моля изберете отговор!');
+                return;
+            }
+            
+            const selectedIndex = parseInt(selectedOption.dataset.index);
+            const correctIndex = quizData[currentQuestion].correct;
+            
+            if (selectedIndex === correctIndex) {
+                score++;
+            }
+            
+            currentQuestion++;
+            
+            if (currentQuestion < quizData.length) {
+                loadQuestion();
+            } else {
+                document.querySelector('.quiz-footer').style.display = 'none';
+                showResult();
+            }
+        });
+        
+        // Initialize quiz
+        loadQuestion();
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                }
+            });
+        });
+        
+        // Floating icons animation
+        const floatingIcons = document.querySelectorAll('.floating-icons');
+        floatingIcons.forEach(icon => {
+            const delay = Math.random() * 2;
+            icon.style.animationDelay = `${delay}s`;
+        });
+    </script>
+</body>
+</html>
